@@ -6,7 +6,7 @@ import Header from '../Header';
 
 // Global styles and component-specific styles.
 import './global.css';
-import styles from './main.module.css';
+import { Main } from './main';
 
 export default function Layout({ children }) {
   const data = useStaticQuery(graphql`
@@ -23,7 +23,7 @@ export default function Layout({ children }) {
     <div>
       <Helmet title={data.site.siteMetadata.title} />
       <Header />
-      <main className={styles.main}>{children}</main>
+      <Main>{children}</Main>
     </div>
   );
 }

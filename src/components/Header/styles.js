@@ -1,13 +1,14 @@
-.header {
-  background-color: rebeccapurple;
-}
+import styled from 'styled-components';
 
-.header__wrap {
+export const HeaderContainer = styled.header`
+  background-color: rebeccapurple;
+
+  .header__wrap {
   align-items: baseline;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
-  max-width: 640px;
+  max-width: 980px;
   padding: 1rem 0;
 }
 
@@ -42,3 +43,4 @@
   background: white;
   color: rebeccapurple;
 }
+`;

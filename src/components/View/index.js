@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styles from "./view.module.css"
+import { ViewContainer } from './styles';
 
 const View = ({ title, children }) => (
   <section className={styles.view}>
