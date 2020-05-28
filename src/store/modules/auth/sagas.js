@@ -1,8 +1,8 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
+import { navigate } from 'gatsby';
 
-import history from '~/services/history';
-import api from '~/services/api';
+import api from '../../../services/api';
 
 import { signInSuccess, signFailure } from './actions';
 
@@ -17,17 +17,12 @@ export function* signIn({ payload }) {
 
     const { token, user, url } = response.data;
 
-    if (user.status === 'inativo') {
-      toast.warning('Você não tem mais permissão.');
-      yield put(signFailure());
-      return;
-    }
-
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user, url));
 
-    history.push('/dashboard');
+    toast.success('Sucesso! Logado.');
+    navigate('/app/profile');
   } catch (err) {
     toast.error('Falha na autenticação, verifique seu dados.');
     yield put(signFailure());
@@ -45,7 +40,7 @@ export function* signRegister({ payload }) {
       provider: true,
     });
 
-    history.push('/');
+    navigate('/');
   } catch (err) {
     toast.error('Falha no cadastro, verifique seus dados.');
 
@@ -64,8 +59,8 @@ export function setToken({ payload }) {
 }
 
 export function* signOut() {
-  yield call(api.post, 'logout/sessions');
-  history.push('/');
+  yield call(api.post, 'logout');
+  navigate('/');
 }
 
 export default all([

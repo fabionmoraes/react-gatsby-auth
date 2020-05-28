@@ -1,18 +1,20 @@
 import React from 'react';
-import View from '../../components/View';
-import { getCurrentUser } from '../../utils/auth';
+import SEO from '../../components/seo';
+
+import { View } from './styles';
 
 const Profile = () => {
-  const { name } = getCurrentUser();
-
   return (
-    <View title="Your Profile">
-      <p>Welcome back to your profile, {name}!</p>
-      <p>
-        This is a client-only route. You could set up a form to save information
-        about a user here.
-      </p>
-    </View>
+    <>
+      <SEO title="Perfil" />
+      <View>
+        <p>Welcome back to your profile!</p>
+        <p>
+          This is a client-only route. You could set up a form to save information
+          about a user here.
+        </p>
+      </View>
+    </>
   );
 };
 

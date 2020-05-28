@@ -1,22 +1,23 @@
 import React from 'react';
-import { Router } from '@reach/router'; //eslint-disable-line
+import { ToastContainer } from 'react-toastify';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+
 import Layout from '../components/Layout';
-import Profile from './Profile';
-import Details from '../components/Details';
-import Login from './Login';
-import PrivateRoute from '../components/PrivateRoute';
-import Status from '../components/Status';
+import Route from '../Route';
 import '../config/ReactotronConfig';
 
-const App = () => (
-  <Layout>
-    <Status />
-    <Router>
-      <PrivateRoute path="/app/details" component={Details} />
-      <PrivateRoute path="/app/profile" component={Profile} />
-      <Login path="/app/login" />
-    </Router>
-  </Layout>
-);
+import { store, persistor } from '../store';
 
-export default App;
+export default function App() {
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Layout>
+          <Route />
+          <ToastContainer autoClose={3000} />
+        </Layout>
+      </PersistGate>
+    </Provider>
+  );
+}

@@ -1,46 +1,22 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  background-color: rebeccapurple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
 
-  .header__wrap {
-  align-items: baseline;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 0 auto;
-  max-width: 980px;
-  padding: 1rem 0;
-}
+  #container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 980px;
+    width: 100%;
+    padding-top: 18px;
+    padding-bottom: 18px;
 
-.header__heading {
-  margin: 0;
-  font-size: 2rem;
-}
-
-.header__nav {
-  font-size: 1.25rem;
-  margin-top: 0;
-  text-align: right;
-}
-
-.header__link {
-  color: white;
-  font-weight: bold;
-  margin-left: 0.75rem;
-  margin-top: 0;
-  padding: 0.25rem;
-  text-decoration: none;
-}
-
-.header__link--home {
-  font-size: 2rem;
-  margin-left: -0.25rem;
-}
-
-.header__link:hover,
-.header__link:active,
-.header__link:focus {
-  background: white;
-  color: rebeccapurple;
-}
+    img {
+      width: 220px;
+    }
+  }
 `;
